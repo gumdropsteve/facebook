@@ -6,9 +6,9 @@ NOTES:
 
   - Pretty simple script
   
-  - Requires few imports
+  	-- Requires few imports
   
-  - Built in PyCharm 4.2 Community Edition 
+  	-- Built in PyCharm 4.2 Community Edition 
  
  
 ISSUES:
