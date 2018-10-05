@@ -1,7 +1,13 @@
 #automation of posting to Facebook
-#needs #geckodriver (in XPATH) #Selenium
-#ERROR TO FIX #Escaping or blocking notifications alert
-#Else #Ready to go
+
+#NOTES 
+  #NEEDS 
+    #Geckodriver (in XPATH) 
+    #Selenium
+  #ERROR TO FIX 
+    #Escaping or blocking notifications alert
+  #Else 
+    #Ready to go
 
 
 print('importing...')
@@ -14,6 +20,7 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from time import sleep
 from selenium.webdriver.firefox.webdriver import WebDriver
+  #Some of this may be unnecessary, tested quite a few layouts
 
 print('starting driver...')
 driver: WebDriver = webdriver.Firefox()
@@ -34,28 +41,29 @@ elem.click()
 print('logging in...')
 time.sleep(random.randrange(8,10))
 
-driver.get('https://facebook.com/pleasantonhome')
+driver.get('https://facebook.com/YOUR PAGE HERE')
+  #E.g. https://www.facebook.com/FoodNetwork/
 print('reloading page...')
 time.sleep(random.randrange(8,10))
 
 StatusElement = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div[1]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div/div[1]/div/div[2]/div/div[1]/div[1]/div/div[2]/div[1]/div/div/div/div/div[2]/div/div[1]/div/span/div/div[2]/div/div[1]/div/div/div/div/div[2]/div')
-#XPATH of "Write a Post" box, may be different for you, used is the easy way not the most correct way
+  #XPATH of "Write a Post" box, may be different for you, used is the easy way not the most correct way
 print('found status box..')
 time.sleep(random.randrange(5, 7))
 print('sending keys...')
-StatusElement.send_keys(" NEW LISTING in Pleasanton!! 🔥 🏡 "
-                        " - 5 Beds "
-                        " - 3 Baths "
-                        " - 3,339 SqFt "
-                        " - Built: 1998 "
-                        " - Ask: $1,850,000 "
-                        "   "
-                        " https://www.zillow.com/homedetails/8227-Moller-Ranch-Dr-Pleasanton-CA-94588/25069378_zpid/?fullpage=true ")
+StatusElement.send_keys(" YOUR POST HERE ")
+  #Advise having spaces before and after each line
+  #Still working on how to have the post 'Enter' into the next line
+
 print('sleeping to load preview...')
+  #If you've included a link this pause is to load the preview
+  #NOTE: this does not always work and you may have to 'Edit' the post
+    #If you are able to click the place after the link and add a 'space' it WILL work
+      #Extend sleep range to 10+ for best results if using above method 
 sleep(random.randrange(8, 10))
 
 PostElement = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div[1]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div/div[1]/div/div[2]/div/div[1]/div[1]/div/div[2]/div[1]/div/div/div/div/div[2]/div/div[2]/div[3]/div/div[2]/div[2]/div/span[2]/div/span/button')
-#XPATH of the "Post Now" button, may be different for you, used is the easy way not the most correct way
+  #XPATH of the "Post Now" button, may be different for you, used is the easy way not the most correct way
 PostElement.click()
 print('finishing...')
 time.sleep(random.randrange(5, 7))
