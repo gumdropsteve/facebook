@@ -7,9 +7,8 @@ ISSUE(S):
   
   Only been doing this for a few days and have absolutely no idea how to get around it.  
   
-  Sending the 'Esc' key MIGHT work, 
-  
-  Other ideas include having a (x, y) coordinated click 
+  Sending the 'Esc' key MIGHT work, Other ideas include having a (x, y) coordinated click 
 
 
-Please share all modifications or solutions. Use at your own risk.
+
+Please share all modifications or solutions. Use at your own risk. Thanks.
