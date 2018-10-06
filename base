@@ -10,6 +10,10 @@
     #Ready to go
 
 
+time.sleep(0*60)
+  #Adjust if you wish to delay the post
+  #In seconds so *60 converts to minutes
+
 print('importing...')
 import os
 import drv as drv
