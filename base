@@ -1,76 +1,86 @@
-#automation of posting to Facebook
-
-#NOTES 
-  #NEEDS 
-    #Geckodriver (in XPATH) 
-    #Selenium
-  #ERROR TO FIX 
-    #Escaping or blocking notifications alert
-  #Else 
-    #Ready to go
-
-
-time.sleep(0*60)
-  #Adjust if you wish to delay the post
-  #In seconds so *60 converts to minutes
-
-print('importing...')
-import os
-import drv as drv
 import time
 import random
 from selenium import webdriver
-from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from time import sleep
-from selenium.webdriver.firefox.webdriver import WebDriver
-  #Some of this may be unnecessary, tested quite a few layouts
+print('done importing.. if new, see notes..')
+time.sleep(1)
+
+# Automation of posting to Facebook
+
+# NOTES 
+#    NEEDS 
+#     Selenium
+#     Chromedriver (in PATH) 
+#    POSSIBLE IMPROVEMENTS 
+#     Ability to use characters out of the BMP\
+#      E.g. emojis
+#     If using Geckodriver
+#        Escaping or blocking notifications alert
+
+
+time.sleep(0*60)
+# Adjust if you wish to delay the post
+#   Default is seconds, *60 converts to minutes
+
 
 print('starting driver...')
-driver: WebDriver = webdriver.Firefox()
+chrome_options = webdriver.ChromeOptions()
+prefs = {"profile.default_content_setting_values.notifications": 2}
+chrome_options.add_experimental_option("prefs", prefs)
+driver = webdriver.Chrome(chrome_options=chrome_options)
+# Disables notifications
+#   Credit & Thanks to najbot
 driver.get('https://facebook.com')
+
 
 emailelement = driver.find_element(By.XPATH, './/*[@id="email"]')
 emailelement.send_keys("YOUR LOGIN EMAIL HERE")
 print('entered user...')
 time.sleep(random.randrange(1, 3))
 
+
 passelement = driver.find_element(By.XPATH, './/*[@id="pass"]')
 passelement.send_keys('YOUR LOGIN PASSWORD HERE')
 print('entered pass...')
 sleep(random.randrange(1, 3))
 
+
 elem = driver.find_element(By.XPATH, './/*[@id="loginbutton"]')
-elem.click()
 print('logging in...')
+elem.click()
 time.sleep(random.randrange(8,10))
+# Sleep range can be lowered on most connections 
+
 
 driver.get('https://facebook.com/YOUR PAGE HERE')
-  #E.g. https://www.facebook.com/FoodNetwork/
+# E.g. https://www.facebook.com/FoodNetwork/
 print('reloading page...')
 time.sleep(random.randrange(8,10))
+
 
 StatusElement = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div[1]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div/div[1]/div/div[2]/div/div[1]/div[1]/div/div[2]/div[1]/div/div/div/div/div[2]/div/div[1]/div/span/div/div[2]/div/div[1]/div/div/div/div/div[2]/div')
   #XPATH of "Write a Post" box, may be different for you, used is the easy way not the most correct way
 print('found status box..')
-time.sleep(random.randrange(5, 7))
+time.sleep(random.randrange(1, 3))
 print('sending keys...')
 StatusElement.send_keys(" YOUR POST HERE ")
   #Advise having spaces before and after each line
   #Still working on how to have the post 'Enter' into the next line
-
-print('sleeping to load preview...')
+print('status sent.. sleeping to load preview...')
   #If you've included a link this pause is to load the preview
   #NOTE: this does not always work and you may have to 'Edit' the post
     #If you are able to click the place after the link and add a 'space' it WILL work
-      #Extend sleep range to 10+ for best results if using above method 
+      #Extend sleep range to 8+ for best results if using above method 
 sleep(random.randrange(8, 10))
+
 
 PostElement = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div[1]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div/div[1]/div/div[2]/div/div[1]/div[1]/div/div[2]/div[1]/div/div/div/div/div[2]/div/div[2]/div[3]/div/div[2]/div[2]/div/span[2]/div/span/button')
   #XPATH of the "Post Now" button, may be different for you, used is the easy way not the most correct way
 PostElement.click()
 print('finishing...')
 time.sleep(random.randrange(5, 7))
+
 
 print('bugging off...')
 sleep(10)
