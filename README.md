@@ -2,23 +2,17 @@
 This will post your input to your Facebook (must be admin) without use of Facebook API (or need of Page Verification). 
  
  
-NOTES:
-
+OVERVIEW:
   - Pretty simple script
-  
   	-- Requires few imports
-  
   	-- Built in PyCharm 4.2 Community Edition 
- 
- 
-ISSUES:
-  
-  - It is likely you will encounter a 'Will you allow facebook.com to send you notifications?' pop-up. 
-  
-  	-- Only been doing this for a few days and have absolutely no idea how to get around it.  
-  
-  	-- Sending the 'Esc' key MIGHT work, Other ideas include having a (x, y) coordinated click 
-	 
+  - New Features
+  	-- "Check in" to any location 
+	-- Add any "Feeling/Activity" 
+
+
+COMING SOON:
+  - Pictures 
 	 	
  
 Please share all modifications or solutions. Use at your own risk. Thanks.
