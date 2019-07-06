@@ -1,5 +1,12 @@
 -* up to date status: no
-# posttopage-facebook
+## facebook
+- automated actions for facebook.com
+- current
+	- post_to_page
+- future
+	- yes
+
+- -- below out of date -- 
 This will post your input to your Facebook (must be admin) without use of Facebook API (or need of Page Verification). 
  
  
