@@ -1,0 +1,1 @@
+# to store paths and other infos utilized by facebook class 
