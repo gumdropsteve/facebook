@@ -1,3 +1,36 @@
+class InstagramBot:
+
+    def __init__(self, username, password):
+        # tag the options field
+        options = webdriver.FirefoxOptions()  
+        # disable push/popups 
+        options.set_preference("dom.push.enabled", False)  
+        # set user
+        self.username = username
+        # set pwrd
+        self.password = password
+        # set driver with options 
+        self.driver = webdriver.Firefox(options=options)
+        # minimize browser window
+        self.driver.minimize_window()
+
+    def login(self):
+        """loads and logs in to instagram
+        """
+        # load instagram login page
+        self.driver.get(ig_log_page)
+        # wait (hedge load time)
+        sleep(3)
+        # find user box, type in account id
+        self.driver.find_element_by_xpath(username_box).send_keys(self.username)
+        # find key box and call locksmith, he should be able to punch in
+        self.driver.find_element_by_xpath(password_box).send_keys(self.password, Keys.RETURN)
+        # hedge request/load time 
+        sleep(3)
+        # take care if "save info" pop-up page pops up
+        check_xpath(webdriver=self.driver, xpath=save_info_popup, click=True)
+
+
 print('Starting...')
 import time
 import random
