@@ -1,4 +1,12 @@
-class InstagramBot:
+import time
+import random
+from time import sleep
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from infos import fb_login, login_box, pass_box
+
+
+class fbBot:
 
     def __init__(self, username, password):
         # tag the options field
@@ -15,32 +23,26 @@ class InstagramBot:
         self.driver.minimize_window()
 
     def login(self):
-        """loads and logs in to instagram
+        """loads and logs in to facebook
         """
-        # load instagram login page
-        self.driver.get(ig_log_page)
+        # load facebook login page
+        self.driver.get(fb_login)
         # wait (hedge load time)
         sleep(3)
         # find user box, type in account id
-        self.driver.find_element_by_xpath(username_box).send_keys(self.username)
+        self.driver.find_element_by_xpath(login_box).send_keys(self.username)
         # find key box and call locksmith, he should be able to punch in
-        self.driver.find_element_by_xpath(password_box).send_keys(self.password, Keys.RETURN)
+        self.driver.find_element_by_xpath(pass_box).send_keys(self.password, Keys.RETURN)
         # hedge request/load time 
         sleep(3)
-        # take care if "save info" pop-up page pops up
-        check_xpath(webdriver=self.driver, xpath=save_info_popup, click=True)
+
+    def close_browser(self):
+        """closes webdriver
+        """
+        self.driver.close()  
 
 
-print('Starting...')
-import time
-import random
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from time import sleep
-print('Done importing.. if new, see notes..')
-time.sleep(random.randrange(1, 2))
-
-
+"""
 # Automation of posting to Facebook
 # NOTES
 #    NEEDS
@@ -52,21 +54,6 @@ time.sleep(random.randrange(1, 2))
 #       Idea: use FB emojis, access through XPATH
 #     If using GeckoDriver
 #        Escaping or blocking notifications alert
-
-
-time.sleep(0*60)
-# Adjust if you wish to delay the post
-#   Default is seconds, *60 converts to minutes
-
-
-print('Starting Driver...')
-chrome_options = webdriver.ChromeOptions()
-prefs = {"profile.default_content_setting_values.notifications": 2}
-chrome_options.add_experimental_option("prefs", prefs)
-driver = webdriver.Chrome(chrome_options=chrome_options)
-# Disables notifications
-#   Credit & Thanks to najbot
-driver.get('https://facebook.com')
 
 
 emailElement = driver.find_element(By.XPATH, './/*[@id="email"]')
@@ -175,3 +162,4 @@ time.sleep(random.randrange(3, 5))
 print('finishing...')
 sleep(7)
 print("done")
+"""
