@@ -2,7 +2,7 @@ import time
 import random
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from infos import fb_login, login_box, pass_box, post_box, post_button
+from infos import fb_login, login_box, pass_box, post_box, post_button, feeling_button, choose_feeling_box
 
 
 class fbBot:
@@ -41,6 +41,31 @@ class fbBot:
         if len(text) > 99:
             # hedge type time
             time.sleep(1 * (len(text)/100))
+
+    def add_feeling(self, general, specific):
+        """add a 'feeling/activity' to the post
+        inputs)
+        > general
+            >> the feeling/activity to be added (to the post)
+        > specific 
+            >> the specific thing being felt or activity being done
+        """
+        # find 'feeling/activity' button & click it
+        self.driver.find_element_by_xpath(feeling_button).click()
+        # hedge load time
+        time.sleep(1)
+        # find input box & send feeling
+        self.driver.find_element_by_xpath(choose_feeling_box).send_keys(general)
+        # hedge list response time
+        time.sleep(1)
+        # select top result
+        self.driver.find_element_by_xpath(choose_feeling_box).send_keys(Keys.RETURN)
+        # find input box & send feeling
+        self.driver.find_element_by_xpath(choose_feeling_box).send_keys(specific)
+        # hedge list response time
+        time.sleep(1)
+        # select top result
+        self.driver.find_element_by_xpath(choose_feeling_box).send_keys(Keys.RETURN)
 
     def post_now(self):
         """locates and clicks 'share now' button
