@@ -11,3 +11,7 @@ pass_box = '//*[@id="pass"]'
 post_box = '//*[@aria-label="Write a post..."]'
 # 'share now' post button; xpath
 post_button = '//span[@id="composerPostButton"]'
+# 'feeling/activity' button; xpath 
+feeling_button = '//*[contains(text(),"Feeling/Activity")]'
+# 'choose a feeling or activity' text box; xpath
+choose_feeling_box = '//*[@data-testid="searchable-text-input"]'
