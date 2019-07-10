@@ -11,10 +11,10 @@ if __name__=='__main__':
     fb.login()
     # load ph4s page
     fb.load_page(url=ph4s)
-    # set status
-    msg='Hello, World!'
     # write status
-    fb.write_post(text=msg)
+    fb.write_post(text='Hello, World!')
+    # add feeling
+    fb.add_feeling(general='looking for', specific='a house')
     # post status
     fb.post_now()
     # close up shop
