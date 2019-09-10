@@ -15,8 +15,11 @@ if __name__=='__main__':
     fb.write_post(text='Hello, World!')
     # add feeling
     fb.add_feeling(general='looking for', specific='a house')
+    # expand post customization options
+    """CURRENT BREAK"""
+    fb.more_post_options()
     # post status
-    fb.post_now()
+    # fb.post_now()
     # close up shop
-    fb.close_browser()
+    # fb.close_browser()
     
