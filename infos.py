@@ -15,3 +15,5 @@ post_button = '//span[@id="composerPostButton"]'
 feeling_button = '//*[contains(text(),"Feeling/Activity")]'
 # 'choose a feeling or activity' text box; xpath
 choose_feeling_box = '//*[@data-testid="searchable-text-input"]'
+# 'more post options' dots (button); xpath
+more_post_options = '//*[@aria-label="More post options"]'
