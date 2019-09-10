@@ -2,7 +2,7 @@ import time
 import random
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from infos import fb_login, login_box, pass_box, post_box, post_button, feeling_button, choose_feeling_box
+from infos import fb_login, login_box, pass_box, post_box, post_button, feeling_button, choose_feeling_box, more_post_options
 
 
 class fbBot:
@@ -66,6 +66,20 @@ class fbBot:
         time.sleep(1)
         # select top result
         self.driver.find_element_by_xpath(choose_feeling_box).send_keys(Keys.RETURN)
+
+    def more_post_options(self):
+        """taps the 3 dots to expand post customization options
+        """
+        # find 'more post options' button (3 dots) and click
+        self.driver.find_element_by_xpath(more_post_options).click()
+
+    def add_location(self, location):
+        """add a location to the post
+        inputs)
+        > location
+            >> the location to be added
+        """
+        pass
 
     def post_now(self):
         """locates and clicks 'share now' button
