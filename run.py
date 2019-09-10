@@ -1,25 +1,31 @@
-from user import u,p
+from user import u, p
 from base import fbBot
 from infos import ph4s
 
 if __name__=='__main__':
     # tag facebook bot
-    fb=fbBot(username=u,password=p)
+    fb = fbBot(user=u)
     # start up driver, keep window large
     fb.start_driver(minimize=False)
+    
     # log in to fb
-    fb.login()
+    fb.login(password=p)
     # load ph4s page
     fb.load_page(url=ph4s)
+    
     # write status
-    fb.write_post(text='Hello, World!')
+    status = f'Hello,\nWorld!\nhttp://bit.ly/2kcA60f '
+    fb.write_post(text=status, link=True)
+    
+    # expand post customization options
+    fb.expand_post_options()  
     # add feeling
     fb.add_feeling(general='looking for', specific='a house')
-    # expand post customization options
-    """CURRENT BREAK"""
-    fb.more_post_options()
+    # add location     
+    fb.add_location('Pleasanton, Ca')
+
     # post status
-    # fb.post_now()
+    fb.share_post()
     # close up shop
-    # fb.close_browser()
+    fb.close_browser(test=True)
     
